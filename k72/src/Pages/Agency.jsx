@@ -1,26 +1,74 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useGSAP } from '@gsap/react' 
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
 const Agency = () => {
+
+  const sectionRef = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
+
+  const images = [
+    "https://k72.ca/uploads/teamMembers/MyleneS_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MEL_640X960-640x960.jpg",
+    "https://k72.ca/uploads/teamMembers/Isa_640X960-640x960.jpg",
+    "https://k72.ca/uploads/teamMembers/Lawrence_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/HugoJoseph_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/ChantalG_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/SophieA_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Claire_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Olivier_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Michele_480X640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/CAMILLE_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MAXIME_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg"
+  ]
+  useGSAP(function(){
+    gsap.to(sectionRef.current, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 27%",
+        end: "top -100%",
+        markers: true,
+        scrub: true,
+        pin: true,
+      }
+    });
+  })
+
   return (
     <div>
-      <div className="HEROTEXT mt-[55vh]">
-        <h1 className="font-[font2] text-center uppercase text-[20vw] leading-[17.5vw]">
-          Soixan7e <br />
-          Douze
-        </h1>
+      <div className="SECTION1">
+        <div ref={sectionRef} className="  IMAGE bg-amber-300 h-75 w-55 absolute top-55 left-[30vw] rounded-2xl  overflow-hidden">
+          <img
+            className="object-cover w-full h-full"
+            src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg "
+            alt=""
+          />
+        </div>
+        <div className="TEXTS relative">
+          <div className="HEROTEXT mt-[55vh]">
+            <h1 className="font-[font2] text-center uppercase text-[20vw] leading-[17.5vw]">
+              Soixan7e <br />
+              Douze
+            </h1>
+          </div>
+          <div className="PARA pl-[40vw]">
+            <p className=" font-[font2] text-[4vw] leading-[4vw] ">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Notre curiosité nourrit notre créativité. On reste humbles et on
+              dit non aux gros egos, même le vôtre. Une marque est vivante. Elle
+              a des valeurs, une personnalité, une histoire. Si on oublie ça, on
+              peut faire de bons chiffres à court terme, mais on la tue à long
+              terme. C’est pour ça qu’on s’engage à donner de la perspective,
+              pour bâtir des marques influentes.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="PARA pl-[40vw]">
-        <p className=" font-[font2] text-[4vw] leading-[4vw] ">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Notre curiosité nourrit notre créativité. On reste humbles et on dit
-          non aux gros egos, même le vôtre. Une marque est vivante. Elle a des
-          valeurs, une personnalité, une histoire. Si on oublie ça, on peut
-          faire de bons chiffres à court terme, mais on la tue à long terme.
-          C’est pour ça qu’on s’engage à donner de la perspective, pour bâtir
-          des marques influentes.
-        </p>
-      </div>
-      <div className="CONTAINER PARA m-[9vw] ml-[13vw] flex gap-20 font-[font1] text-[1.5vw]">
+      <div className="SECTION 2 m-[9vw] ml-[13vw] flex gap-20 font-[font1] text-[1.5vw]">
         <div className="upper flex flex-col justify-between">
           <p>Expertise</p>
           <p>
