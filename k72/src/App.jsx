@@ -6,7 +6,7 @@ import Agency from './Pages/Agency'
 
 const App = () => {
   return (
-    <div className='h-screen w-screen bg-black text-white'>
+    <div className='h-screen w-screen'>
      
       <Routes>
         <Route path='/' element={<Home />} />
