@@ -6,17 +6,20 @@ import { ScrollTrigger } from "gsap/all";
 const Agency = () => {
 
   const sectionRef = useRef(null);
+  const imageRef = useRef(null);
+
+
   gsap.registerPlugin(ScrollTrigger);
 
-  const images = [
-    "https://k72.ca/uploads/teamMembers/MyleneS_480x640-480x640.jpg",
+  
+  const imageArray = [
+    "https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/MEL_640X960-640x960.jpg",
     "https://k72.ca/uploads/teamMembers/Isa_640X960-640x960.jpg",
     "https://k72.ca/uploads/teamMembers/Lawrence_480x640-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/HugoJoseph_480x640-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/ChantalG_480x640-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/SophieA_480x640-480x640.jpg",
-    "https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/Claire_480x640-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/Olivier_480x640-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/Michele_480X640-480x640.jpg",
@@ -25,15 +28,24 @@ const Agency = () => {
     "https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg"
   ]
+   
   useGSAP(function(){
     gsap.to(sectionRef.current, {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 27%",
-        end: "top -100%",
-        markers: true,
-        scrub: true,
+        end: "top -120%",
+
         pin: true,
+        onUpdate:(elem)=>{
+          let imageIndex;
+          if (elem.progress === 1) {
+            imageIndex = imageArray.length - 1;
+          } else { 
+            imageIndex = Math.floor(elem.progress * imageArray.length);
+          }
+          imageRef.current.src = imageArray[imageIndex];
+        }
       }
     });
   })
@@ -41,8 +53,9 @@ const Agency = () => {
   return (
     <div>
       <div className="SECTION1">
-        <div ref={sectionRef} className="  IMAGE bg-amber-300 h-75 w-55 absolute top-55 left-[30vw] rounded-2xl  overflow-hidden">
+        <div ref={sectionRef} className="  IMAGE  h-75 w-55 absolute top-55 left-[30vw] rounded-2xl  overflow-hidden">
           <img
+            ref={imageRef}
             className="object-cover w-full h-full"
             src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg "
             alt=""
